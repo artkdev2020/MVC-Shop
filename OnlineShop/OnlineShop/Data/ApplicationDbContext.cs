@@ -217,7 +217,10 @@ namespace OnlineShop.Data
 
             var categories = new Category[]
             {
-                new Category{ Id = 1, Name = "men", ImagePath = "e7b0a0f4114740d01bdfafcf94996cd4.jpg" }
+                new Category{ Id = 1, Name = "men", ImagePath = "e7b0a0f4114740d01bdfafcf94996cd4.jpg" },
+                new Category{ Id = 2, Name = "women", ImagePath = "e7b0a0f4114740d01bdfafcf94996cd4.jpg" },
+                new Category{ Id = 3, Name = "child", ImagePath = "e7b0a0f4114740d01bdfafcf94996cd4.jpg" }
+
             };
 
             modelBuilder.Entity<Category>().HasData(categories);
@@ -228,7 +231,15 @@ namespace OnlineShop.Data
                 new Subcategory{ Id = 2, CategoryFk = 1, Name = "men pants", ImagePath = "8e4640753851f983fc66043aa9463042.jpg" },
                 new Subcategory{ Id = 3, CategoryFk = 1, Name = "men shirts", ImagePath = "3686bf9a01a64d4bbb5c2937056f39da.jpg" },
                 new Subcategory{ Id = 4, CategoryFk = 1, Name = "underwear", ImagePath = "7b376124498573ac8a630c0c741b612f.jpg" },
-                new Subcategory{ Id = 5, CategoryFk = 1, Name = "work clothes", ImagePath = "57caaf1a7e9e77a2fe5282d149f988f2.jpg" }
+                new Subcategory{ Id = 5, CategoryFk = 1, Name = "work clothes", ImagePath = "57caaf1a7e9e77a2fe5282d149f988f2.jpg" },
+                new Subcategory{ Id = 6, CategoryFk = 2, Name = "women footwear", ImagePath = "e046b7ae6d58ddbc287ee64b8a8ef107.jpg" },
+                new Subcategory{ Id = 7, CategoryFk = 2, Name = "women pants", ImagePath = "8e4640753851f983fc66043aa9463042.jpg" },
+                new Subcategory{ Id = 8, CategoryFk = 2, Name = "women shirts", ImagePath = "3686bf9a01a64d4bbb5c2937056f39da.jpg" },
+                new Subcategory{ Id = 11, CategoryFk = 3, Name = "child footwear", ImagePath = "e046b7ae6d58ddbc287ee64b8a8ef107.jpg" },
+                new Subcategory{ Id = 12, CategoryFk = 3, Name = "child pants", ImagePath = "8e4640753851f983fc66043aa9463042.jpg" },
+                new Subcategory{ Id = 13, CategoryFk = 3, Name = "child shirts", ImagePath = "3686bf9a01a64d4bbb5c2937056f39da.jpg" },
+                new Subcategory{ Id = 14, CategoryFk = 3, Name = "child shoes", ImagePath = "7b376124498573ac8a630c0c741b612f.jpg" },
+                new Subcategory{ Id = 15, CategoryFk = 1, Name = "work shoes", ImagePath = "57caaf1a7e9e77a2fe5282d149f988f2.jpg" }
             };
 
             modelBuilder.Entity<Subcategory>().HasData(subcategories);
