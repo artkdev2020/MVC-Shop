@@ -71,6 +71,16 @@ namespace OnlineShop
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "Product",
+                    pattern: "{controller=Product}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
+            });
+
+
         }
     }
 }

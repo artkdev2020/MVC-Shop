@@ -27,7 +27,7 @@ namespace OnlineShop.Controllers
 
         public async Task<IActionResult> Privacy()
         {
-            return View(await _context.Categories.ToListAsync());
+            return View(await _context.Subcategories.ToListAsync());
 
         }
 
