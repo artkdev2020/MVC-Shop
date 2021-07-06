@@ -1,37 +1,69 @@
-﻿<!DOCTYPE html>
+﻿@model OnlineShop.Models.SubModels.CategoryModel
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - OnlineShop</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="~/css/reset.css" />
+    <link href="~/css/header.css" rel="stylesheet" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">OnlineShop</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+        <div class="navigation" id="navigation">
+            <img class="navigation__logo"
+                 src="~/img/icons/logo.svg"
+                 alt="logo" />
+            <ul class="navigation__menu menu">
+                <li class="menu__item">
+                    <a class="menu__link" href="#">Home</a>
+                </li>
+                <li class="menu__item"><a class="menu__link" href="#">Blog</a></li>
+                <li class="menu__item dropdown" id="categories">
+                    <a class="menu__link" href="#">Categories</a>
+                    <ul class="dropdown-content">
+                        @foreach (var itemCat in Model.category)
+                        {
+                            <li class="dropdown-parent">
+                                <a href="#" class="submenu__link">@itemCat.Name</a>
+                                <ul class="sub-dropdown-content">
+                                    @foreach (var itemSub in Model.subcategory)
+                                    {
+                                        @if (@itemCat.Id == @itemSub.CategoryFk)
+                                        {
+                                            <li>
+                                                <a href="#" class="submenu__link">@itemSub.Name</a>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </li>
+                        }
                     </ul>
-                    <partial name="_LoginPartial" />
-                </div>
+                </li>
+                <li class="menu__item"><a class="menu__link" href="#">About</a></li>
+            </ul>
+            <div class="navigation__images">
+                <img class="navigation__image"
+                     src="~/img/icons/account.svg"
+                     alt="account" />
+                <img class="navigation__image"
+                     src="~/img/icons/like.svg"
+                     alt="favorites" />
+                <img class="navigation__image"
+                     src="~/img/icons/shopping-cart.svg"
+                     alt="shopping-cart" />
             </div>
-        </nav>
+        </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="main-content">
+        <main role="main">
             @RenderBody()
         </main>
     </div>
@@ -41,9 +73,9 @@
             &copy; 2021 - OnlineShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+    <script src="~/js/app.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

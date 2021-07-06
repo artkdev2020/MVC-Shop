@@ -1,0 +1,267 @@
+/**Common**/
+
+.mr {
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}
+
+.scale {
+	display: inline-block;
+	overflow: hidden;
+}
+
+.scale img {
+	transition: 1s;
+	display: block;
+}
+
+.scale img:hover {
+	transform: scale(
+		1.1
+	);
+}
+/**Common**/
+
+
+
+/**Main content**/
+
+.grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	gap: 15px
+		15px;
+	grid-auto-flow: row;
+	grid-template-areas:
+		'top-left top-center-l top-center-r top-right'
+		'center-left top-center-l top-center-r center-right'
+		'bottom-left bottom-left bottom-right bottom-right';
+	height: 100vh;
+}
+
+.top-center-l {
+	grid-area: top-center-l;
+}
+
+.top-center-r {
+	grid-area: top-center-r;
+}
+
+.top-left {
+	grid-area: top-left;
+}
+
+.center-left {
+	grid-area: center-left;
+}
+
+.top-right {
+	grid-area: top-right;
+}
+
+.center-right {
+	grid-area: center-right;
+}
+
+.bottom-left {
+	grid-area: bottom-left;
+}
+
+.bottom-right {
+	grid-area: bottom-right;
+}
+
+.grid__item {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.grid__item:hover .grid__area,
+.grid__item:focus .grid__area {
+	transform: scale(
+		1.2
+	);
+	transition: all
+		1s;
+}
+
+.grid__item:hover span,
+.grid__item:focus span {
+	display: block;
+}
+
+.grid__area {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+	background-color: black;
+}
+
+.grid__area::before {
+	content: '';
+	display: none;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(
+		255,
+		255,
+		255,
+		0.5
+	);
+}
+
+.grid__area span {
+	display: none;
+	color: black;
+	font-family: sans-serif;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(
+		-50%,
+		-50%
+	);
+}
+
+.grid__item:hover .grid__area:before,
+.grid__item:focus .grid__area:before {
+	display: block;
+}
+
+.grid__img-1 {
+	background-image: url('/src/assets/images/test/imgrow1/017304cf6c8639a88237fa925193576d.jpg');
+}
+
+.grid__img-2 {
+	background-image: url('/src/assets/images/test/imgrow1/5c564f0f7f17001896efb92c58e9eecb.jpg');
+}
+
+.grid__img-3 {
+	background-image: url('/src/assets/images/test/imgrow1/9f4c933cbcba542de5bcd93d422f747c.jpg');
+}
+
+.grid__img-4 {
+	background-image: url('/src/assets/images/test/imgrow1/142ae0094f3ae61db342e2e38d92b76e.jpg');
+}
+
+.grid__img-5 {
+	background-image: url('/src/assets/images/test/imgrow1/e7b0a0f4114740d01bdfafcf94996cd4.jpg');
+}
+
+.grid__img-6 {
+	background-image: url('/src/assets/images/test/imgrow1/5012023ab0dfa14c5cd131113f5c1824.jpg');
+}
+
+.grid__img-7 {
+	background-image: url('/src/assets/images/test/imgrow2/a9b04e41ae45d776358bb26441a6ee41.jpg');
+}
+
+.grid__img-8 {
+	background-image: url('/src/assets/images/test/imgrow2/MEzwRBZUSiWklbEQTwiRKEARpCXLDn4C.jpg');
+}
+/**Main content**/
+
+/**Carousel**/
+
+.carousel {
+	display: grid;
+	grid-template-columns: 10% 80% 10%;
+	text-align: center;
+	font-family: Poppins;
+}
+
+.carousel .carousel__nav {
+	display: flex;
+	justify-content: center;
+}
+
+.carousel__prev,
+.carousel__next {
+	align-self: center;
+	opacity: 0.6;
+}
+
+.carousel__prev img,
+.carousel__next img {
+	height: 1.5rem;
+	width: 1.5rem;
+	border-radius: 2rem;
+	padding: 0.5rem;
+	background: lightgray;
+}
+
+.carousel__prev:hover,
+.carousel__next:hover {
+	opacity: 1;
+}
+
+.owl-card {
+	display: flex;
+	flex-direction: column;
+	border: 1px
+		solid
+		lightgray;
+}
+
+.owl-card_size {
+	min-height: 22rem;
+}
+
+.owl-card__icon {
+	margin-top: 1rem;
+	padding: 0rem
+		1rem
+		0rem
+		1rem;
+}
+
+.owl-card__body {
+	margin-top: 1rem;
+}
+
+.owl-card__gallery {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-bottom: 1rem;
+}
+
+.owl-card__gallery li {
+	max-width: 2rem;
+	padding-top: 0.3rem;
+}
+
+.owl-card__title {
+	font-weight: bold;
+	font-size: 1.2rem;
+	min-height: 3rem;
+}
+
+.owl-card__row {
+	display: grid;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	font-size: 1.1rem;
+	line-height: 1.5rem;
+}
+
+.owl-card__row_no_discount {
+	grid-template-columns: 90% 8%;
+}
+
+.owl-card__row_discount {
+	grid-template-columns: 45% 45% 8%;
+}
+
+.owl-card__price {
+	color: red;
+}
+
+/**Carousel**/

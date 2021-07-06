@@ -1,0 +1,132 @@
+﻿/**Fonts**/
+@font-face {
+    font-family: Poppins;
+    src: url(/src/assets/fonts/Poppins-Regular.ttf);
+}
+/**Fonts**/
+
+/**Common**/
+body {
+    display: flex;
+    flex-direction: column;
+}
+/**Common**/
+
+/**Navigation**/
+.navigation {
+    width: 100%;
+    position: fixed;
+    display: flex;
+    padding: 20px;
+    background-color: #fff;
+    justify-content: space-between;
+    font-family: Poppins;
+    font-size: 18px;
+    line-height: 27px;
+    z-index: 5;
+}
+
+.navigation__logo {
+    cursor: pointer;
+}
+
+.navigation__images {
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 1%;
+    width: 10%;
+    cursor: pointer;
+}
+
+.navigation__image {
+    width: 24px;
+}
+
+.menu {
+    list-style: none;
+}
+
+    .menu li {
+        float: left;
+    }
+
+.menu__item {
+    display: block;
+    /*width: 5em;*/
+    padding: 10px;
+    text-decoration: none;
+    text-align: center;
+    color: #333;
+    background-color: #fff;
+}
+
+.menu__link {
+    text-transform: uppercase;
+    background-color: #fff;
+    color: #333;
+}
+
+.submenu__link {
+    text-transform: capitalize;
+    color: #333;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 36px;
+    left: 0px;
+    background-color: #fff;
+    width: 130px;
+    z-index: 1;
+    -webkit-box-shadow: -12px 21px 79px -7px rgba( 34, 60, 80, 0.05 );
+    -moz-box-shadow: -12px 21px 79px -7px rgba( 34, 60, 80, 0.05 );
+    box-shadow: -12px 21px 79px -7px rgba( 34, 60, 80, 0.05 );
+}
+
+    .dropdown-content li {
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+        .dropdown-content li:hover {
+            background-color: rgb( 250, 249, 249 );
+        }
+
+.dropdown-parent {
+    position: relative;
+}
+
+.sub-dropdown-content {
+    position: absolute;
+    width: 200px;
+    margin-left: 130px;
+    margin-top: -37px;
+    display: none;
+    background-color: #fff;
+    -webkit-box-shadow: -12px 21px 79px -7px rgba( 34, 60, 80, 0.05 );
+    -moz-box-shadow: -12px 21px 79px -7px rgba( 34, 60, 80, 0.05 );
+    box-shadow: -12px 21px 79px -7px rgba( 34, 60, 80, 0.05 );
+    z-index: 2;
+}
+
+.dropdown-parent:hover .sub-dropdown-content {
+    display: block;
+}
+/**Navigation**/
+
+/**Main content**/
+.main-content {
+    margin: 87px 15px 15px 15px;
+}
+/**Main content**/

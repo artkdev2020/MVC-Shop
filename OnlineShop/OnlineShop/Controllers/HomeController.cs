@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using OnlineShop.Models.SubModels;
 
 namespace OnlineShop.Controllers
 {
@@ -22,7 +23,8 @@ namespace OnlineShop.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            CategoryModel wrap = new CategoryModel(_context.Categories.ToList(), _context.Subcategories.ToList());
+            return View(wrap);
         }
 
         public async Task<IActionResult> Privacy()
