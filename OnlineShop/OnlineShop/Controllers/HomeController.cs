@@ -15,6 +15,8 @@ namespace OnlineShop.Controllers
     {
         private ApplicationDbContext _context;
 
+
+
         public HomeController(ApplicationDbContext context)
         {
             _context = context;
