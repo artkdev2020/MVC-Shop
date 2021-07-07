@@ -1,22 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using OnlineShop.Data;
 using OnlineShop.Models;
-using System;
-using System.Collections.Generic;
+using OnlineShop.Models.SubModels;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using OnlineShop.Models.SubModels;
 
 namespace OnlineShop.Controllers
 {
+    public class ProductWithImg
+    {
+        public OnlineShop.Models.Product prod { get; set; }
+        public OnlineShop.Models.ProductImage prodImg { get; set; }
+
+        public ProductWithImg() { }
+
+        public ProductWithImg(OnlineShop.Models.Product prod, OnlineShop.Models.ProductImage prodImg)
+        {
+            this.prod = prod;
+            this.prodImg = prodImg;
+        }
+    }
+
     public class HomeController : Controller
     {
         private ApplicationDbContext _context;
-
-
 
         public HomeController(ApplicationDbContext context)
         {
@@ -25,7 +34,12 @@ namespace OnlineShop.Controllers
 
         public IActionResult Index()
         {
-            CategoryModel wrap = new CategoryModel(_context.Categories.ToList(), _context.Subcategories.ToList());
+            IndexModel wrap = new IndexModel(_context.Categories.ToList(),
+                _context.Subcategories.ToList(),
+                _context.Products.ToList(),
+                _context.ProductImages.ToList());
+
+            //IndexModel wrap = new IndexModel(_context.Categories.ToList(), _context.Subcategories.ToList());
             return View(wrap);
         }
 
@@ -40,5 +54,16 @@ namespace OnlineShop.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        //private void GetProductsForCarousel()
+        //{
+        //    List<ProductWithImg> listProd = new List<ProductWithImg>();
+
+        //    int count = 0;
+        //    foreach(var prod in _context.Products)
+        //    {
+
+        //    }
+        //}
     }
 }

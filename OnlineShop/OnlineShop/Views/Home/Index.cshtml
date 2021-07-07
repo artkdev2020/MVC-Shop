@@ -2,7 +2,107 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@model OnlineShop.Models.SubModels.IndexModel
+
+
+@section Head {
+    <link href="~/css/index.css" rel="stylesheet" />
+    <link href="~/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/css/owl.theme.default.min.css" rel="stylesheet" />
+}
+
+<div class="main-content__grid grid">
+    <div class="top-center-l grid__item">
+        <div class="grid__img-1 grid__area">
+            <span>Hello</span>
+        </div>
+    </div>
+    <div class="top-center-r grid__item">
+        <div class="grid__img-2 grid__area">
+            <span>Hello</span>
+        </div>
+    </div>
+    <div class="top-left grid__item">
+        <div class="grid__img-3 grid__area">
+            <span>Hello</span>
+        </div>
+    </div>
+    <div class="center-left grid__item">
+        <div class="grid__img-4 grid__area">
+            <span>Hello</span>
+        </div>
+    </div>
+    <div class="top-right grid__item">
+        <div class="grid__img-5 grid__area">
+            <span>Hello</span>
+        </div>
+    </div>
+    <div class="center-righ grid__item">
+        <div class="grid__img-6 grid__area">
+            <span>Hello</span>
+        </div>
+    </div>
+    <div class="bottom-left grid__item">
+        <div class="grid__img-7 grid__area">
+            <span>Hello</span>
+        </div>
+    </div>
+    <div class="bottom-right grid__item">
+        <div class="grid__img-8 grid__area">
+            <span>Hello</span>
+        </div>
+    </div>
 </div>
+
+<div class="carousel carousel_mt">
+    <div class="carousel__nav">
+        <a class="carousel__prev">
+            <img src="~/img/icons/chevron-left.svg" alt="link prev" />
+        </a>
+    </div>
+    <div id="id-owl-carousel" class="owl-carousel">
+        @foreach (var item in Model.products)
+        {
+            <div class="owl-card owl-card_size mr">
+                <div class="owl-card__icon scale">
+                    <img src="~/img/index/bottom_carousel/45d4292e760fc0a5b69da14a9dfd05d2.jpg" />
+                </div>
+                <div class="owl-card__body">
+                    <div class="owl-card__title">@item.Name</div>
+
+                    @if (item.Discount > 0)
+                    {
+                        <div class="owl-card__row owl-card__row_discount">
+                            <div class="owl-card__price">@item.Price</div>
+                            <div class="owl-card__sale">@item.Discount</div>
+                            <div class="owl-card__favorites-logo">
+                                <a><img src="~/img/icons/heart.svg" /></a>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="owl-card__row owl-card__row_no_discount">
+                            <div class="owl-card__price">@item.Price</div>
+                            <div class="owl-card__favorites-logo">
+                                <a><img src="~/img/icons/heart.svg" /></a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="carousel__nav">
+        <a class="carousel__next">
+            <img src="~/img/icons/chevron-right.svg" alt="link next" />
+        </a>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/lib/owl.carousel.min.js" asp-append-version="true"></script>
+    <script src="~/js/index.js" asp-append-version="true"></script>
+}
