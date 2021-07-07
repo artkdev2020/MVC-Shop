@@ -20,21 +20,19 @@ namespace OnlineShop.Controllers
         }
 
         // GET: ProductController
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Products.ToListAsync());
+            return View(_context.Products.ToList());
+        }
+
+        public IActionResult LoadFile()
+        {
+            return View();
         }
 
         // GET: ProductController/Details/5
         public ActionResult Details(int id)
         {
-
-
-
-
-
-
-
             return View();
         }
 
