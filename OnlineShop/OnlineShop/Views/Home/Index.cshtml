@@ -1,7 +1,10 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    ProductWithImage carouselProducts = (ProductWithImage)ViewData["CarouselProducts"];
+    //ProductWithImage carouselProducts = (ProductWithImage)ViewData["CarouselProducts"];
 }
+
+@*@using OnlineShop.Services
+@inject DbRepository dB*@
 
 @section Head {
     <link href="~/css/index.css" rel="stylesheet" />
@@ -63,7 +66,7 @@
         </a>
     </div>
     <div id="id-owl-carousel" class="owl-carousel">
-        @foreach (var item in carouselProducts.products)
+        @*@foreach (var item in dB.Context.Products)
         {
             <div class="owl-card owl-card_size mr">
                 <div class="owl-card__icon scale">
@@ -93,7 +96,7 @@
                     }
                 </div>
             </div>
-        }
+        }*@
     </div>
 
     <div class="carousel__nav">
