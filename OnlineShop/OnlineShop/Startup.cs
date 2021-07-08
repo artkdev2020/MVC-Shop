@@ -74,6 +74,10 @@ namespace OnlineShop
                     name: "Product",
                     pattern: "{controller=Product}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+                endpoints.MapControllerRoute(
+                    name: "Product",
+                    pattern: "{controller=Subcategory}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
 
         }

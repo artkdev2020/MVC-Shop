@@ -46,18 +46,22 @@
             @RenderBody()
         </main>
     </div>
-    <footer class="border-top footer text-muted">
-        <div class="navigation" id="navigation">
-            <ul class="navbar-nav flex-grow-1">
+    <footer style="min-width:100px" class="border-top footer text-muted">
+        <div class="navigation" id="navigationFooter">
+            <ul class="navigation__menu menu text-center" >
                 <li class="nav-item">
                     <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="LoadFile">Add Product</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Subcategory" asp-action="Create">Create Subcategory</a>
+                </li>
             </ul>
-         </div>
-</footer>
+        </div>
+    </footer>
+
     @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
     @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
     <script src="~/js/app.js" asp-append-version="true"></script>
