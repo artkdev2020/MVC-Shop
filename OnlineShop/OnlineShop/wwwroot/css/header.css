@@ -1,7 +1,7 @@
 ﻿/**Fonts**/
 @font-face {
     font-family: Poppins;
-    src: url(/src/assets/fonts/Poppins-Regular.ttf);
+    src: url('/fonts/Poppins-Regular.ttf');
 }
 /**Fonts**/
 
@@ -52,7 +52,6 @@ body {
 
 .menu__item {
     display: block;
-    /*width: 5em;*/
     padding: 10px;
     text-decoration: none;
     text-align: center;

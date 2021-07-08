@@ -32,10 +32,6 @@ namespace OnlineShop
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-            /*services.AddDbContext<MyContext>(options =>
-            options.UseSqlServer(
-            Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDatabaseDeveloperPageExceptionFilter();*/
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -71,16 +67,6 @@ namespace OnlineShop
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "Product",
-                    pattern: "{controller=Product}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
-            });
-
-
         }
     }
 }

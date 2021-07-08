@@ -1,5 +1,8 @@
-﻿@model OnlineShop.Models.SubModels.IndexModel
+﻿@*@model OnlineShop.Models.SubModels.IndexModel*@
 
+@{
+    IndexModel headerModel = (IndexModel)ViewData["Header"];
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +15,11 @@
     <link href="~/css/reset.css" rel="stylesheet" />
     <link href="~/css/header.css" rel="stylesheet" />
 
-    @RenderSection("Head")
+
+    @if (IsSectionDefined("Head"))
+    {
+        @RenderSection("Head")
+    }
 
 </head>
 <body>
@@ -29,12 +36,12 @@
                 <li class="menu__item dropdown" id="categories">
                     <a class="menu__link" href="#">Categories</a>
                     <ul class="dropdown-content">
-                        @foreach (var itemCat in Model.category)
+                        @foreach (var itemCat in headerModel.category)
                         {
                             <li class="dropdown-parent">
                                 <a href="#" class="submenu__link">@itemCat.Name</a>
                                 <ul class="sub-dropdown-content">
-                                    @foreach (var itemSub in Model.subcategory)
+                                    @foreach (var itemSub in headerModel.subcategory)
                                     {
                                         @if (@itemCat.Id == @itemSub.CategoryFk)
                                         {
@@ -63,11 +70,9 @@
             </div>
         </div>
     </header>
-    <div class="main-content">
-        <main role="main">
-            @RenderBody()
-        </main>
-    </div>
+    @RenderBody()
+
+
 
     <footer class="border-top footer text-muted">
         <div class="container">

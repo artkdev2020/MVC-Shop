@@ -2,9 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnlineShop.Data;
-using OnlineShop.Models;
-using System;
-using System.Collections.Generic;
+using OnlineShop.Models.SubModels;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,15 +11,19 @@ namespace OnlineShop.Controllers
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _context;
+        public IndexModel _header { get; }
 
         public ProductController(ApplicationDbContext context)
         {
             _context = context;
+            _header = _header = new IndexModel(context.Categories.ToList(), context.Subcategories.ToList());
+
         }
 
         // GET: ProductController
         public async Task<IActionResult> Index()
         {
+            ViewData["Header"] = _header;
             return View(await _context.Products.ToListAsync());
         }
 
