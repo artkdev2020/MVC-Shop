@@ -1,5 +1,10 @@
-﻿@model OnlineShop.Models.SubModels.CategoryModel
+<<<<<<< HEAD
+﻿@using OnlineShop.Services
+@inject DbRepository dB
+=======
+﻿
 
+>>>>>>> artem_dev
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,10 +14,15 @@
     <title>@ViewData["Title"] - OnlineShop</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" href="~/css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="~/css/owl.theme.default.min.css" />
-    <link rel="stylesheet" href="~/css/reset.css" />
+    <link href="~/css/reset.css" rel="stylesheet" />
     <link href="~/css/header.css" rel="stylesheet" />
+
+
+    @if (IsSectionDefined("Head"))
+    {
+        @RenderSection("Head")
+    }
+
 </head>
 <body>
     <header>
@@ -25,15 +35,16 @@
                     <a class="menu__link" href="#">Home</a>
                 </li>
                 <li class="menu__item"><a class="menu__link" href="#">Blog</a></li>
+<<<<<<< HEAD
                 <li class="menu__item dropdown" id="categories">
                     <a class="menu__link" href="#">Categories</a>
                     <ul class="dropdown-content">
-                        @foreach (var itemCat in Model.category)
+                        @foreach (var itemCat in dB.Categories)
                         {
                             <li class="dropdown-parent">
                                 <a href="#" class="submenu__link">@itemCat.Name</a>
                                 <ul class="sub-dropdown-content">
-                                    @foreach (var itemSub in Model.subcategory)
+                                    @foreach (var itemSub in dB.Subcategories)
                                     {
                                         @if (@itemCat.Id == @itemSub.CategoryFk)
                                         {
@@ -47,6 +58,9 @@
                         }
                     </ul>
                 </li>
+=======
+
+>>>>>>> artem_dev
                 <li class="menu__item"><a class="menu__link" href="#">About</a></li>
             </ul>
             <div class="navigation__images">
@@ -62,20 +76,44 @@
             </div>
         </div>
     </header>
-    <div class="main-content">
-        <main role="main">
-            @RenderBody()
-        </main>
-    </div>
+<<<<<<< HEAD
+    @RenderBody()
+
+
 
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2021 - OnlineShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
+
+=======
+    <div class="main-content">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+    <footer style="min-width:100px" class="border-top footer text-muted">
+        <div class="navigation" id="navigationFooter">
+            <ul class="navigation__menu menu text-center" >
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="LoadFile">Add Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Subcategory" asp-action="Create">Create Subcategory</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
     @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
     @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
     <script src="~/js/app.js" asp-append-version="true"></script>
+>>>>>>> artem_dev
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
