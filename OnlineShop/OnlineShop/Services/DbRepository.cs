@@ -6,7 +6,7 @@ namespace OnlineShop.Services
 {
     public class DbRepository
     {
-        private ApplicationDbContext _context;
+        readonly private ApplicationDbContext _context;
 
         public DbRepository(ApplicationDbContext context)
         {
@@ -27,24 +27,18 @@ namespace OnlineShop.Services
         {
             get { return _context.Products.ToList(); }
         }
+
+        public string GetCategoryImg(int idCategory)
+        {
+            foreach(var item in _context.Categories.ToList())
+            {
+                if(item.Id == idCategory)
+                {
+                    return item.ImagePath;
+                }
+            }
+
+            return null;
+        }
     }
-
-    //public class DbRepository
-    //{
-    //    private static ApplicationDbContext _context;
-
-    //    private DbRepository()
-    //    {
-    //        _context = new ApplicationDbContext();
-    //    }
-
-    //    public static ApplicationDbContext GetDb()
-    //    {
-    //        if(_context == null)
-    //        {
-    //            _context = new DbRepository();
-    //        }
-    //        return _context;
-    //    }
-    //}
 }

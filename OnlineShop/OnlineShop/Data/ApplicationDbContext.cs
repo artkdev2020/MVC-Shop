@@ -35,6 +35,7 @@ namespace OnlineShop.Data
         public DbSet<OrderDetails> OrderDetails { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<FiscalBill> FiscalBills { get; set; }
+
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             return this.SaveChangesWithTriggersAsync(base.SaveChangesAsync, acceptAllChangesOnSuccess: true, cancellationToken: cancellationToken);
@@ -217,9 +218,10 @@ namespace OnlineShop.Data
 
             var categories = new Category[]
             {
-                new Category{ Id = 1, Name = "men", ImagePath = "e7b0a0f4114740d01bdfafcf94996cd4.jpg" },
-                new Category{ Id = 2, Name = "women", ImagePath = "e7b0a0f4114740d01bdfafcf94996cd4.jpg" },
-                new Category{ Id = 3, Name = "child", ImagePath = "e7b0a0f4114740d01bdfafcf94996cd4.jpg" }
+                new Category{ Id = 1, Name = "men", ImagePath = "/files/categories/boys.jpg" },
+                new Category{ Id = 2, Name = "women", ImagePath = "/files/categories/woomen.jpg" },
+                new Category{ Id = 3, Name = "boys", ImagePath = "/files/categories/boys.jpg" },
+                new Category{ Id = 4, Name = "girls", ImagePath = "/files/categories/girls.jpg" }
 
             };
 
@@ -227,19 +229,20 @@ namespace OnlineShop.Data
 
             var subcategories = new Subcategory[]
             {
-                new Subcategory{ Id = 1, CategoryFk = 1, Name = "men footwear", ImagePath = "e046b7ae6d58ddbc287ee64b8a8ef107.jpg" },
-                new Subcategory{ Id = 2, CategoryFk = 1, Name = "men pants", ImagePath = "8e4640753851f983fc66043aa9463042.jpg" },
-                new Subcategory{ Id = 3, CategoryFk = 1, Name = "men shirts", ImagePath = "3686bf9a01a64d4bbb5c2937056f39da.jpg" },
-                new Subcategory{ Id = 4, CategoryFk = 1, Name = "underwear", ImagePath = "7b376124498573ac8a630c0c741b612f.jpg" },
-                new Subcategory{ Id = 5, CategoryFk = 1, Name = "work clothes", ImagePath = "57caaf1a7e9e77a2fe5282d149f988f2.jpg" },
-                new Subcategory{ Id = 6, CategoryFk = 2, Name = "women footwear", ImagePath = "e046b7ae6d58ddbc287ee64b8a8ef107.jpg" },
-                new Subcategory{ Id = 7, CategoryFk = 2, Name = "women pants", ImagePath = "8e4640753851f983fc66043aa9463042.jpg" },
-                new Subcategory{ Id = 8, CategoryFk = 2, Name = "women shirts", ImagePath = "3686bf9a01a64d4bbb5c2937056f39da.jpg" },
-                new Subcategory{ Id = 11, CategoryFk = 3, Name = "child footwear", ImagePath = "e046b7ae6d58ddbc287ee64b8a8ef107.jpg" },
-                new Subcategory{ Id = 12, CategoryFk = 3, Name = "child pants", ImagePath = "8e4640753851f983fc66043aa9463042.jpg" },
-                new Subcategory{ Id = 13, CategoryFk = 3, Name = "child shirts", ImagePath = "3686bf9a01a64d4bbb5c2937056f39da.jpg" },
-                new Subcategory{ Id = 14, CategoryFk = 3, Name = "child shoes", ImagePath = "7b376124498573ac8a630c0c741b612f.jpg" },
-                new Subcategory{ Id = 15, CategoryFk = 1, Name = "work shoes", ImagePath = "57caaf1a7e9e77a2fe5282d149f988f2.jpg" }
+                new Subcategory{ Id = 1, CategoryFk = 1, Name = "men footwear", ImagePath = "/files/images/default/300x300.png" },
+                new Subcategory{ Id = 2, CategoryFk = 1, Name = "men pants", ImagePath = "/files/images/default/300x300.png" },
+                new Subcategory{ Id = 3, CategoryFk = 1, Name = "men shirts", ImagePath = "/files/images/default/300x300.png" },
+                new Subcategory{ Id = 4, CategoryFk = 1, Name = "underwear", ImagePath = "/files/images/default/300x300.png" },
+                new Subcategory{ Id = 5, CategoryFk = 1, Name = "work clothes", ImagePath = "/files/images/default/300x300.png" },
+                new Subcategory{ Id = 6, CategoryFk = 2, Name = "women footwear", ImagePath = "/files/images/default/300x300.png" },
+                new Subcategory{ Id = 7, CategoryFk = 2, Name = "women pants", ImagePath = "/files/images/default/300x300.png" },
+                new Subcategory{ Id = 8, CategoryFk = 2, Name = "women shirts", ImagePath = "/files/images/default/300x300.png" },
+                new Subcategory{ Id = 9, CategoryFk = 2, Name = "women underwear", ImagePath = "/files/images/default/300x300.png" },
+                new Subcategory{ Id = 10, CategoryFk = 3, Name = "child footwear", ImagePath = "/files/images/default/300x300.png" },
+                new Subcategory{ Id = 11, CategoryFk = 3, Name = "child pants", ImagePath = "/files/images/default/300x300.png" },
+                new Subcategory{ Id = 12, CategoryFk = 3, Name = "child shirts", ImagePath = "/files/images/default/300x300.png" },
+                new Subcategory{ Id = 13, CategoryFk = 3, Name = "child shoes", ImagePath = "/files/images/default/300x300.png" },
+                new Subcategory{ Id = 14, CategoryFk = 1, Name = "work shoes", ImagePath = "/files/images/default/300x300.png" }
             };
 
             modelBuilder.Entity<Subcategory>().HasData(subcategories);
@@ -260,13 +263,13 @@ namespace OnlineShop.Data
 
             var images = new ProductImage[]
             {
-                new ProductImage{ Id = 1, ProductFk = 1, Path = "b2cc1086d94515415ddaeb3d9f0ae038.jpg" },
-                new ProductImage{ Id = 2, ProductFk = 2, Path = "ee845ecc75d29c963fd839ab76e84980.jpg" },
-                new ProductImage{ Id = 3, ProductFk = 3, Path = "f15e265e85585bcbb649b6df8987ed9e.jpg" },
-                new ProductImage{ Id = 4, ProductFk = 4, Path = "fc42bc8ff8571a49933be09115564dc1.jpg" },
-                new ProductImage{ Id = 5, ProductFk = 5, Path = "8c96505c918782a36d542e36b936caf1.jpg" },
-                new ProductImage{ Id = 6, ProductFk = 6, Path = "a878bc1d9999b885442c1b96f6168108.jpg" },
-                new ProductImage{ Id = 7, ProductFk = 7, Path = "bd6d7451e04a3480d8d265085f3cb105.jpg" }
+                new ProductImage{ Id = 1, ProductFk = 1, Path = "/files/images/default/300x300.png" },
+                new ProductImage{ Id = 2, ProductFk = 2, Path = "/files/images/default/300x300.png" },
+                new ProductImage{ Id = 3, ProductFk = 3, Path = "/files/images/default/300x300.png" },
+                new ProductImage{ Id = 4, ProductFk = 4, Path = "/files/images/default/300x300.png" },
+                new ProductImage{ Id = 5, ProductFk = 5, Path = "/files/images/default/300x300.png" },
+                new ProductImage{ Id = 6, ProductFk = 6, Path = "/files/images/default/300x300.png" },
+                new ProductImage{ Id = 7, ProductFk = 7, Path = "/files/images/default/300x300.png" }
             };
 
             modelBuilder.Entity<ProductImage>().HasData(images);

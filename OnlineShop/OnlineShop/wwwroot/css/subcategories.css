@@ -1,0 +1,24 @@
+﻿.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+}
+
+.card-subcategory {
+    display: inline-block;
+}
+
+.card-subcategory_mr {
+    margin: 1em 0em 1em 0em;
+}
+
+.card-subcategory__text {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.card-subcategory__text_mr {
+    margin: 1em 0em 1em 0em;
+}
+
+/*https://localhost:44392/home/ListSubcategories?id=1*/

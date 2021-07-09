@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Subcategories";
+}
+
+@model IEnumerable<OnlineShop.Models.Subcategory>
+@section Head {
+    <link href="~/css/subcategories.css" rel="stylesheet" />
+}
+
+<div class="main-content">
+    <main role="main">
+        <div class="grid-container">
+            @foreach (var item in Model)
+            {
+                <div class="card-subcategory card-subcategory_mr">
+                    <div class="card-subcategory__text card-subcategory__text_mr">@item.Name</div>
+                    <p><img src="@item.ImagePath" /></p>
+                </div>
+            }
+        </div>
+    </main>
+</div>

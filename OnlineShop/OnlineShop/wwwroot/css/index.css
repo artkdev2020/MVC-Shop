@@ -20,10 +20,7 @@
         }
 /**Common**/
 
-
-
 /**Main content**/
-
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -122,40 +119,39 @@
 }
 
 .grid__img-1 {
-    background-image: url('/img/index/imgrow1/017304cf6c8639a88237fa925193576d.jpg');
+    background-image: url('/files/images/default/850x1280.png'); /* top center left */
 }
 
 .grid__img-2 {
-    background-image: url('/img/index/imgrow1/5c564f0f7f17001896efb92c58e9eecb.jpg');
+    background-image: url('/files/images/default/850x1280.png'); /* top center right */
 }
 
 .grid__img-3 {
-    background-image: url('/img/index/imgrow1/9f4c933cbcba542de5bcd93d422f747c.jpg');
+    background-image: url('/files/images/default/700x500.png'); /* left top */
 }
 
 .grid__img-4 {
-    background-image: url('/img/index/imgrow1/142ae0094f3ae61db342e2e38d92b76e.jpg');
+    background-image: url('/files/images/default/700x500.png'); /* left bottom */
 }
 
 .grid__img-5 {
-    background-image: url('/img/index/imgrow1/e7b0a0f4114740d01bdfafcf94996cd4.jpg');
+    background-image: url('/files/images/default/700x500.png'); /* right top */
 }
 
 .grid__img-6 {
-    background-image: url('/img/index/imgrow1/5012023ab0dfa14c5cd131113f5c1824.jpg');
+    background-image: url('/files/images/default/700x500.png'); /* right bottom */
 }
 
 .grid__img-7 {
-    background-image: url('/img/index/imgrow2/a9b04e41ae45d776358bb26441a6ee41.jpg');
+    background-image: url('/files/images/default/1000x360.png'); /* left center bottom */
 }
 
 .grid__img-8 {
-    background-image: url('/img/index/imgrow2/MEzwRBZUSiWklbEQTwiRKEARpCXLDn4C.jpg');
+    background-image: url('/files/images/default/1000x360.png'); /* right center bottom */
 }
 /**Main content**/
 
 /**Carousel**/
-
 .carousel {
     display: grid;
     grid-template-columns: 10% 80% 10%;
@@ -207,6 +203,10 @@
     padding: 0rem 1rem 0rem 1rem;
 }
 
+.icon_size {
+    min-height: 300px;
+}
+
 .owl-card__body {
     margin-top: 1rem;
 }
@@ -248,5 +248,4 @@
 .owl-card__price {
     color: red;
 }
-
 /**Carousel**/
