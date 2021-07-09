@@ -1,11 +1,5 @@
-﻿@*@model OnlineShop.Models.SubModels.IndexModel*@
-@using OnlineShop.Services
+﻿@using OnlineShop.Services
 @inject DbRepository dB
-
-
-@*@{
-    //IndexModel headerModel = (IndexModel)ViewData["Header"];
-}*@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,10 +13,10 @@
     <link href="~/css/header.css" rel="stylesheet" />
 
 
-    @*@if (IsSectionDefined("Head"))
+    @if (IsSectionDefined("Head"))
     {
         @RenderSection("Head")
-    }*@
+    }
 
 </head>
 <body>
@@ -39,12 +33,12 @@
                 <li class="menu__item dropdown" id="categories">
                     <a class="menu__link" href="#">Categories</a>
                     <ul class="dropdown-content">
-                        @foreach (var itemCat in dB.Context.Categories)
+                        @foreach (var itemCat in dB.Categories)
                         {
                             <li class="dropdown-parent">
                                 <a href="#" class="submenu__link">@itemCat.Name</a>
                                 <ul class="sub-dropdown-content">
-                                    @foreach (var itemSub in dB.Context.Subcategories)
+                                    @foreach (var itemSub in dB.Subcategories)
                                     {
                                         @if (@itemCat.Id == @itemSub.CategoryFk)
                                         {
@@ -73,7 +67,7 @@
             </div>
         </div>
     </header>
-    @*@RenderBody()*@
+    @RenderBody()
 
 
 
