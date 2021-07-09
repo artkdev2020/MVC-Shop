@@ -34,8 +34,8 @@ namespace OnlineShop
             services.AddDatabaseDeveloperPageExceptionFilter();
             /*services.AddDbContext<MyContext>(options =>
             options.UseSqlServer(
-            Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDatabaseDeveloperPageExceptionFilter();*/
+            Configuration.GetConnectionString("DefaultConnection")));*/
+            services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
