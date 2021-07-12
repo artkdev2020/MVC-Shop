@@ -26,11 +26,11 @@ namespace OnlineShop.Controllers
         public IActionResult ListSubcategories(int id)
         {
 
-            if (id < 0 || id >= _context.Products.ToArray().Length)
-            {
-                return Redirect("/Home/Index");
+            //if (id < 0 || id > _context.Products.ToArray().Length)
+            //{
+            //    return Redirect("/Home/Index");
 
-            }
+            //}
 
             List<Subcategory> result = new List<Subcategory>();
 
@@ -48,14 +48,13 @@ namespace OnlineShop.Controllers
         [HttpGet]
         public IActionResult ListProducts(int id)
         {
-            if (id < 0 || id >= _context.Products.ToArray().Length)
-            {
-                return Redirect("/Home/Index");
+            //if (id < 0 || id > _context.Products.ToArray().Length)
+            //{
+            //    return Redirect("/Home/Index");
 
-            }
+            //}
 
             List<ProductWithImg> result = new List<ProductWithImg>();
-            //List<Product> result = new List<Product>();
 
             foreach (var prodItem in _context.Products.ToList())
             {
@@ -74,10 +73,40 @@ namespace OnlineShop.Controllers
             return View(result);
         }
 
+        public IActionResult Product(int id)
+        {
+            if (id < 0 || id > _context.Products.ToArray().Length)
+            {
+                return Redirect("/Home/Index");
+            }
+
+             //result = new List<ProductWithImg>();
+
+            foreach (var prodItem in _context.Products.ToList())
+            {
+                if (prodItem.Id == id)
+                {
+                    foreach (var prodImg in _context.ProductImages.ToList())
+                    {
+                        if (prodImg.ProductFk == prodItem.Id)
+                        {
+                            return View(new ProductWithImg(prodItem, prodImg));
+                        }
+                    }
+                }
+            }
+
+            return View();
+        }
+
+        public IActionResult Checkout()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> Privacy()
         {
             return View();
-
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

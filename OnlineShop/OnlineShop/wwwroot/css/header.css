@@ -22,7 +22,6 @@ body {
     justify-content: space-between;
     font-family: Poppins;
     font-size: 18px;
-    line-height: 27px;
     z-index: 5;
 }
 
@@ -37,6 +36,10 @@ body {
     width: 10%;
     cursor: pointer;
 }
+
+    .navigation__images a {
+        align-self: center;
+    }
 
 .navigation__image {
     width: 24px;

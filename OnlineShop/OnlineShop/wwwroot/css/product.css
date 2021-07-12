@@ -1,0 +1,58 @@
+﻿.product-container {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr;
+}
+
+.product-icon {
+    text-align: right;
+}
+
+.product-icon_style {
+    margin: 0rem 1rem 0rem 0rem;
+}
+
+.product-info {
+    text-align: left;
+}
+
+.product-info_style {
+    margin: 0rem 0rem 0rem 1rem;
+}
+
+.product-title {
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.product-body {
+    margin: 0.5rem 0rem 0rem 0rem;
+}
+
+.product-price-container {
+    display: grid;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 2.0rem;
+    grid-template-columns: 40% 60%;
+}
+
+.product__row_discount {
+    display: grid;
+    grid-template-columns:  15% 15% 70%;
+}
+
+.product__row_no_discount {
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.product__price {
+    color: red;
+    text-align: center;
+}
+
+.product__sale {
+    text-align: center;
+    text-decoration: line-through;
+}

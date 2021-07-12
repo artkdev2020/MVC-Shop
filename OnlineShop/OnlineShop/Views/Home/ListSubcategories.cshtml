@@ -13,8 +13,12 @@
             @foreach (var item in Model)
             {
                 <div class="card-subcategory card-subcategory_mr">
-                    <div class="card-subcategory__text card-subcategory__text_mr">@item.Name</div>
-                    <p><img src="@item.ImagePath"/></p>
+                    <a href="/home/listproducts?id=@item.Id">
+                        <div class="card-subcategory__text card-subcategory__text_mr">@item.Name</div>
+                        <div>
+                            <img src="@item.ImagePath" alt="@item.Name" />
+                        </div>
+                    </a>
                 </div>
             }
         </div>

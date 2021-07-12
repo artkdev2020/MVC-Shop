@@ -16,7 +16,9 @@
             {
                 <div class="product-card product-card_size  mr">
                     <div class="product-card__icon icon_size scale">
-                        <img src="@item.ProdImg.Path" />
+                        <a href="/home/product?id=@item.Prod.Id">
+                            <img src="@item.ProdImg.Path" />
+                        </a>
                     </div>
                     <div class="product-card__body">
                         <div class="product-card__title">@item.Prod.Name</div>

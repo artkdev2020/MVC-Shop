@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "Product";
+}
+
+@model ProductWithImg
+
+@section Head {
+    <link href="~/css/product.css" rel="stylesheet" />
+}
+
+<div class="main-content">
+    <main role="main">
+        <div class="product-container">
+            <div class="product-icon product-icon_style">
+                <img src="@Model.ProdImg.Path" alt="@Model.Prod.Name" />
+            </div>
+            <div class="product-info product-info_style">
+                <div class="product-title">
+                    @Model.Prod.Name
+                </div>
+                <div class="product-body">
+                    <div class="product-short-description">@Model.Prod.ShortDescription</div>
+                    <div class="product-description">@Model.Prod.Description</div>
+                    <div class="product-price-container">
+                        @if (Model.Prod.Discount > 0)
+                        {
+                            <div class="product__row_discount">
+                                <div class="product__price">@Math.Round(@Model.Prod.Price, 2)</div>
+                                <div class="product__sale">@Discount.GetDiscount(@Model.Prod.Price, @Model.Prod.Discount)</div>
+                                <div class="product__favorites-logo">
+                                    @*<a><img src="~/img/icons/heart.svg" /></a>*@
+                                    <button>ADD TO CARD</button>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class=" product__row_no_discount">
+                                <div class="product__price">@Math.Round(@Model.Prod.Price, 2)</div>
+                                <div class="product__favorites-logo">
+                                    <button>ADD TO CARD</button>
+                                    @*<a><img src="~/img/icons/heart.svg" /></a>*@
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
