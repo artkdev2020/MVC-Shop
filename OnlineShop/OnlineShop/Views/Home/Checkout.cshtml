@@ -5,7 +5,104 @@
 
 <div class="main-content">
     <main role="main">
-        <h1>Checkout</h1>
+
+            <div class="container-fluid">
+                <form>
+                    <h1 class="chekout-heading">Оформление заказа</h1>
+                    <div class="row">
+                        <div class="col-12 col-lg-9">
+                            <fieldset>
+                                <legend>Ваши контактные данные</legend>
+                                <div class="row">
+                                    <div class="col-12 col-md -6">
+                                        <div class="form-group">
+                                            <label for="lastname">Фамилия</label>
+                                            <input type="text" class="form-control" id="lastname" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="name">Имя</label>
+                                            <input type="text" class="form-control" id="name" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md -6">
+                                        <div class="form-group">
+                                            <label for="phone">Мобильный телефон</label>
+                                            <input type="text" class="form-control" id="phone" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md -6">
+                                        <div class="form-group">
+                                            <label for="city">Город</label>
+                                            <input type="text" class="form-control" id="city" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <div class="checkout-order">
+                                <div class="checkout-order__header checkout-order_flex-align-end">
+                                    <h2 class="checkout-order__heading">Заказ №1</h2>
+                                    <p class="checkout-order__total">
+                                        <span>на сумму: 111&nbsp;</span>
+                                        <span>₴</span>
+                                    </p>
+                                </div>
+                                <div class="check-order">
+                                    <fieldset class="checkout-block">
+                                        <div class="checkout-product__header">
+                                            <legend class="checkout-block__title">Товары</legend>
+                                            <a href="#"
+                                               class="btn btn-link"
+                                               role="button"
+                                               aria-pressed="true">Редактировать</a>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 col-md-6 chekout-product__title checkout-order_flex-align-center">
+                                                <span>
+                                                    <img src="~/files/images/default/300x300.png" />
+                                                </span>
+                                                <p>Название продукта</p>
+                                            </div>
+                                            <div class="col-12 col-md-6 d-flex checkout-order_flex-align-center">
+                                                <div class="table">
+                                                    <table class="table table-borderless">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Цена</th>
+                                                                <th scope="col">Количество</th>
+                                                                <th scope="col">Сумма</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="red">111 ₴</td>
+
+
+                                                                <td>1</td>
+                                                                <td>111 ₴</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="discount">269 ₴</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
     </main>
 </div>
 
