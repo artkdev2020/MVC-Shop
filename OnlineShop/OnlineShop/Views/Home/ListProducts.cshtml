@@ -1,0 +1,53 @@
+﻿@using OnlineShop.Utils
+
+@{
+    ViewData["Title"] = "ListProducts";
+}
+
+@model IEnumerable<ProductWithImg>
+@section Head {
+    <link href="~/css/products.css" rel="stylesheet" />
+}
+
+<div class="main-content">
+    <main role="main">
+        <div class="products-container">
+            @foreach (var item in Model)
+            {
+                <div class="product-card product-card_size  mr">
+                    <div class="product-card__icon icon_size scale">
+                        <img src="@item.ProdImg.Path" />
+                    </div>
+                    <div class="product-card__body">
+                        <div class="product-card__title">@item.Prod.Name</div>
+
+                        @if (item.Prod.Discount > 0)
+                        {
+                            <div class="product-card__row product-card__row_discount">
+                                <div class="product-card__price">@Math.Round(@item.Prod.Price, 2)</div>
+                                <div class="product-card__sale">@Discount.GetDiscount(@item.Prod.Price, @item.Prod.Discount)</div>
+                                <div class="product-card__favorites-logo">
+                                    <a><img src="~/img/icons/heart.svg" /></a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="product-card__row product-card__row_no_discount">
+                                <div class="product-card__price">@Math.Round(@item.Prod.Price, 2)</div>
+                                <div class="product-card__favorites-logo">
+                                    <a><img src="~/img/icons/heart.svg" /></a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </main>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/js/products.js" asp-append-version="true"></script>
+}

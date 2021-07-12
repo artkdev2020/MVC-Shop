@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using OnlineShop.Data;
 using OnlineShop.Models;
+using OnlineShop.Utils;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,8 +13,6 @@ namespace OnlineShop.Controllers
     {
         private ApplicationDbContext _context;
 
-        
-
         public HomeController(ApplicationDbContext context)
         {
             _context = context;
@@ -24,17 +22,11 @@ namespace OnlineShop.Controllers
             return View();
         }
 
-        public IActionResult ListProduct()
-        {
-            return View();
-        }
-
-
         [HttpGet]
         public IActionResult ListSubcategories(int id)
         {
 
-            if (id <= 0 || id >= _context.Products.ToArray().Length)
+            if (id < 0 || id >= _context.Products.ToArray().Length)
             {
                 return Redirect("/Home/Index");
 
@@ -44,9 +36,38 @@ namespace OnlineShop.Controllers
 
             foreach (var item in _context.Subcategories.ToList())
             {
-                if(item.CategoryFk == id)
+                if (item.CategoryFk == id)
                 {
                     result.Add(item);
+                }
+            }
+
+            return View(result);
+        }
+
+        [HttpGet]
+        public IActionResult ListProducts(int id)
+        {
+            if (id < 0 || id >= _context.Products.ToArray().Length)
+            {
+                return Redirect("/Home/Index");
+
+            }
+
+            List<ProductWithImg> result = new List<ProductWithImg>();
+            //List<Product> result = new List<Product>();
+
+            foreach (var prodItem in _context.Products.ToList())
+            {
+                if (prodItem.SubcategoryFk == id)
+                {
+                    foreach(var prodImg in _context.ProductImages.ToList())
+                    {
+                        if(prodImg.ProductFk == prodItem.Id)
+                        {
+                            result.Add(new ProductWithImg(prodItem, prodImg));
+                        }
+                    }
                 }
             }
 

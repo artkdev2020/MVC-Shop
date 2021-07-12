@@ -36,14 +36,14 @@
                         @foreach (var itemCat in dB.Categories)
                         {
                             <li class="dropdown-parent">
-                                <a href="#" class="submenu__link">@itemCat.Name</a>
+                                <a href="/home/listsubcategories?id=@itemCat.Id" class="submenu__link">@itemCat.Name</a>
                                 <ul class="sub-dropdown-content">
                                     @foreach (var itemSub in dB.Subcategories)
                                     {
                                         @if (@itemCat.Id == @itemSub.CategoryFk)
                                         {
                                             <li>
-                                                <a href="#" class="submenu__link">@itemSub.Name</a>
+                                                <a href="/home/listproducts?id=@itemSub.Id" class="submenu__link">@itemSub.Name</a>
                                             </li>
                                         }
                                     }
