@@ -1,8 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using OnlineShop.Models.NewEmailModel;
 
 namespace OnlineShop.Data
@@ -16,11 +12,32 @@ namespace OnlineShop.Data
             : base(options)
         {
             // Если такая БД уже есть, то удаляем ее
-            if (Database.CanConnect())
-                Database.EnsureDeleted();
+            if (!Database.CanConnect())
+            {
+                Database.EnsureCreated();
+                DesserializedCities cities = DesserializedCities.DesserializeCollection("F:/Repositories/artKDev/MVC-Shop/OnlineShop/OnlineShop/ServicesFiles/cities.json");
+                DesserializedWarehouses warehouses = DesserializedWarehouses.DesserializeCollection("F:/Repositories/artKDev/MVC-Shop/OnlineShop/OnlineShop/ServicesFiles/warehouses.json");
+
+                if (cities != null && warehouses != null)
+                {
+                    foreach (var item in cities.data)
+                    {
+                        this.Add(item);
+                    }
+
+                    foreach (var item in warehouses.data)
+                    {
+                        this.Add(item);
+                    }
+
+                    this.SaveChanges();
+                }
+            }
+
+            //Database.EnsureDeleted();
 
             // Создаем БД
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
 
         //public ApplicationContextEmail()

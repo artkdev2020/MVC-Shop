@@ -27,17 +27,16 @@ namespace OnlineShop
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
+            services.AddDbContext<ApplicationContextEmail>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("ContextEmailConnection")));
+            services.AddDatabaseDeveloperPageExceptionFilter();
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-
-            //services.AddDbContext<ApplicationContextEmail>(options =>
-            //    options.UseSqlServer(
-            //        Configuration.GetConnectionString("ContextEmailConnection")));
-            //services.AddDatabaseDeveloperPageExceptionFilter();
-
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            //    .AddEntityFrameworkStores<ApplicationContextEmail>();
 
             services.AddControllersWithViews();
             services.AddTransient<DbRepository>();

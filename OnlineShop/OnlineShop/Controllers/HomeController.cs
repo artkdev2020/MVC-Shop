@@ -12,8 +12,9 @@ namespace OnlineShop.Controllers
     public class HomeController : Controller
     {
         private ApplicationDbContext _context;
+        
 
-        public HomeController(ApplicationDbContext context)
+        public HomeController(ApplicationDbContext context, ApplicationContextEmail emailContext)
         {
             _context = context;
         }

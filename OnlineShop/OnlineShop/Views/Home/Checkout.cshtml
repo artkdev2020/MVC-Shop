@@ -1,107 +1,129 @@
-﻿
+﻿@using OnlineShop.Models.NewEmailModel
+@*@model IEnumerable<City>*@
+@inject OnlineShop.Services.DbRepository dB
 @{
     ViewData["Title"] = "Checkout";
 }
 
+@section Head {
+    <link href="~/css/chekout.css" rel="stylesheet" />
+}
+
+
 <div class="main-content">
     <main role="main">
 
-            <div class="container-fluid">
-                <form>
-                    <h1 class="chekout-heading">Оформление заказа</h1>
-                    <div class="row">
-                        <div class="col-12 col-lg-9">
-                            <fieldset>
-                                <legend>Ваши контактные данные</legend>
-                                <div class="row">
-                                    <div class="col-12 col-md -6">
-                                        <div class="form-group">
-                                            <label for="lastname">Фамилия</label>
-                                            <input type="text" class="form-control" id="lastname" />
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-group">
-                                            <label for="name">Имя</label>
-                                            <input type="text" class="form-control" id="name" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 col-md -6">
-                                        <div class="form-group">
-                                            <label for="phone">Мобильный телефон</label>
-                                            <input type="text" class="form-control" id="phone" />
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md -6">
-                                        <div class="form-group">
-                                            <label for="city">Город</label>
-                                            <input type="text" class="form-control" id="city" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-
-                            <div class="checkout-order">
-                                <div class="checkout-order__header checkout-order_flex-align-end">
-                                    <h2 class="checkout-order__heading">Заказ №1</h2>
-                                    <p class="checkout-order__total">
-                                        <span>на сумму: 111&nbsp;</span>
-                                        <span>₴</span>
-                                    </p>
-                                </div>
-                                <div class="check-order">
-                                    <fieldset class="checkout-block">
-                                        <div class="checkout-product__header">
-                                            <legend class="checkout-block__title">Товары</legend>
-                                            <a href="#"
-                                               class="btn btn-link"
-                                               role="button"
-                                               aria-pressed="true">Редактировать</a>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-md-6 chekout-product__title checkout-order_flex-align-center">
-                                                <span>
-                                                    <img src="~/files/images/default/300x300.png" />
-                                                </span>
-                                                <p>Название продукта</p>
-                                            </div>
-                                            <div class="col-12 col-md-6 d-flex checkout-order_flex-align-center">
-                                                <div class="table">
-                                                    <table class="table table-borderless">
-                                                        <thead>
-                                                            <tr>
-                                                                <th scope="col">Цена</th>
-                                                                <th scope="col">Количество</th>
-                                                                <th scope="col">Сумма</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="red">111 ₴</td>
-
-
-                                                                <td>1</td>
-                                                                <td>111 ₴</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="discount">269 ₴</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                            </div>
-                        </div>
+        <div class="contact-container">
+            <div class="title">Оформление заказа</div>
+            <div>
+                <div class="contacts-container">
+                    <div class="wrap-buyers">
+                        <label for="nameBuyer">Имя</label>
+                        <input type="text" name="nameBuyer" />
                     </div>
-                </form>
+
+                    <div class="wrap-buyers">
+                        <label for="lastnameBuyer">Фамилия</label>
+                        <input type="text" name="lastnameBuyer" />
+                    </div>
+                    <div class="wrap-buyers">
+                        <label for="phoneBuyer">Телефон</label>
+                        <input type="text" name="phoneBuyer" />
+
+                    </div>
+                    <div class="wrap-buyers">
+                        <label for="cityBuyer">Город</label>
+                        <input type="text" name="cityBuyer" />
+                    </div>
+                </div>
+                <hr />
+            </div>
+        </div>
+
+        <div class="order-container">
+            <div class="order_header">
+                <div class="title">Заказ № 1</div>
+                <div class="order_summ">на сумму 170 грн.</div>
+            </div>
+            <hr />
+            <div class="order-products">
+                <div class="order-products_header mr-b">
+                    <p>Товары</p>
+                    <button>Редактировать</button>
+                </div>
+                <div class="order-products_body mr-b">
+                    <div class="flex-container">
+                        <span class="flex_item-middle">
+                            <img src="~/files/images/default/56x56.png" alt="product img" />
+                        </span>
+                    </div>
+                    <div class="flex-container">
+                        <span class="flex_item-middle">
+                            Name of product
+                        </span>
+                    </div>
+                    <div class="flex-container">
+                        <span class="flex_item-middle">
+                            Table of product characteristics
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <hr />
+
+            <div class="delivery">
+                <p class="mr-b">Доставка</p>
+                <select class="check_city mr-b">
+                    <option disabled selected>Выберите город</option>
+                    @foreach (var item in dB.Cities)
+                    {
+                        <option>@item.DescriptionRu</option>
+                    }
+                </select>
             </div>
 
+            <hr />
 
+            <div class="payment-container">
+
+            </div>
+
+            <hr />
+
+
+        </div>
+
+        <div class="contact-container">
+            <div class="title">Контактные данные получателя заказа</div>
+            <div>
+                <div class="contacts-container">
+                    <div class="wrap-buyers">
+                        <label for="nameRecipient">Имя</label>
+                        <input type="text" name="nameRecipient" />
+                    </div>
+
+                    <div class="wrap-buyers">
+                        <label for="lastnameRecipient">Фамилия</label>
+                        <input type="text" name="lastnameRecipient" />
+                    </div>
+                    <div class="wrap-buyers">
+                        <label for="phoneRecipient">Телефон</label>
+                        <input type="text" name="phoneRecipient" />
+
+                    </div>
+                    <div class="wrap-buyers">
+                        <label for="cityRecipient">Город</label>
+                        <input type="text" name="cityRecipient" />
+                    </div>
+                </div>
+                <hr />
+            </div>
+        </div>
+
+        @*@foreach (var item in dB.Cities)
+            {
+                <h6> @item.Ref</h6>
+            }*@
 
     </main>
 </div>
