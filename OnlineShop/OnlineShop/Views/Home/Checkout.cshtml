@@ -1,6 +1,6 @@
 ﻿@using OnlineShop.Models.NewEmailModel
-@*@model IEnumerable<City>*@
-@inject OnlineShop.Services.DbRepository dB
+@model IEnumerable<City>
+@*@inject OnlineShop.Services.DbRepository dB*@
 @{
     ViewData["Title"] = "Checkout";
 }
@@ -72,10 +72,17 @@
             <hr />
 
             <div class="delivery">
-                <p class="mr-b">Доставка</p>
+                <form method="post">
+                    <p class="mr-b">Доставка</p>
+                    <div style="padding-bottom: 1rem">
+                        <label for="filterCity">Сортировка по городу</label>
+                        <input type="text" name="filterCity" />
+                        <input type="submit" value="ok" />
+                    </div>
+                </form>
                 <select class="check_city mr-b">
                     <option disabled selected>Выберите город</option>
-                    @foreach (var item in dB.Cities)
+                    @foreach (var item in Model)
                     {
                         <option>@item.DescriptionRu</option>
                     }

@@ -12,11 +12,12 @@ namespace OnlineShop.Controllers
     public class HomeController : Controller
     {
         private ApplicationDbContext _context;
-        
+        private ApplicationContextEmail _contextEmail;
 
         public HomeController(ApplicationDbContext context, ApplicationContextEmail emailContext)
         {
             _context = context;
+            _contextEmail = emailContext;
         }
         public IActionResult Index()
         {
@@ -100,8 +101,16 @@ namespace OnlineShop.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Checkout()
         {
+            return View(_contextEmail.Cities.ToList());
+        }
+
+        [HttpPost]
+        public IActionResult Checkout(string place)
+        {
+
             return View();
         }
 
